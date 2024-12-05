@@ -59,7 +59,7 @@ RUN set -eux; \
 		--enable-tls \
 	; \
 	nproc="$(nproc)"; \
-	make -j "$nproc"; \
+	make CFLAGS+='-fno-omit-frame-pointer' -j "$nproc"; \
 	\
 # see https://github.com/docker-library/memcached/pull/54#issuecomment-562797748 and https://bugs.debian.org/927461 for why we have to munge openssl.cnf
 	sed -i.bak 's/SECLEVEL=2/SECLEVEL=1/g' /etc/ssl/openssl.cnf; \

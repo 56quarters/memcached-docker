@@ -54,7 +54,7 @@ RUN set -eux; \
 		--enable-tls \
 	; \
 	nproc="$(nproc)"; \
-	make -j "$nproc"; \
+	make CFLAGS+='-fno-omit-frame-pointer' -j "$nproc"; \
 	\
 	make test PARALLEL="$nproc"; \
 	\
